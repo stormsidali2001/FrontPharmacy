@@ -9,16 +9,20 @@ const Card = ({bgImage , title , text , price, button ,image ,open , setOpen , s
                 {
                     image ?<img src={image} className='object-contain w-[70%] max-h-[35%]'/> : ""
                 }
-                <div className="text-[11px] w-[80%]">{text}</div>
+                {
+                    text ? <div className="text-[11px] w-[80%]">{text}</div>: ""
+                }
                 {
                     price ? <div className="text-[13px] text-[#2EAC33]">Prix : {price} DA</div> : ""
                 }
-                <button 
+                {
+                    button&&<button 
                     className="h-[22px] text-[13px] w-fit px-4 rounded-md shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white flex flex-row items-center justify-center space-x-4"
                     onClick={(e) => {setProduitSelectionne(el.id); setOpen(!open)}}
                 >
                     {button}
                 </button>
+                }
             </div>
         </div>
     )
