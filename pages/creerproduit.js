@@ -70,29 +70,32 @@ const CreerProduit = props => {
                     }
                     {
                         suivant&&(
-                          image?(
-                              <img src={URL.createObjectURL(image)} className="h-[200px] object-contain "/>
-                          )
-                          :
-                          (
                             <div className="flex flex-col items-center justify-start mt-10 space-y-4 ">
-                                    <label htmlFor="input530"   className="h-[370px] w-[320px] bg-white/30 shadow-md rounded-md flex flex-col space-y-6 items-center justify-center">
-                                        <img src="/imageupload.webp" className="h-[300px] object-contain mix-blend-darken"/>
-                                        <div className="text-[18px] text-center">Cliquez ici pour ajouter une image !</div>
-                                    </label>
-                                    <input 
-                                        type="file"
-                                        id="input530"
-                                        className="hidden"
-                                        onChange={handleFileChange}
-                                    />
-                                    <button  
+                              {  image?(
+                                    <img src={URL.createObjectURL(image)} className="h-[200px] object-contain "/>
+                                )
+                                :
+                                (
+                                    <>
+                                            <label htmlFor="input530"   className="h-[370px] w-[320px] bg-white/30 shadow-md rounded-md flex flex-col space-y-6 items-center justify-center">
+                                                <img src="/imageupload.webp" className="h-[300px] object-contain mix-blend-darken"/>
+                                                <div className="text-[18px] text-center">Cliquez ici pour ajouter une image !</div>
+                                            </label>
+                                            <input 
+                                                type="file"
+                                                id="input530"
+                                                className="hidden"
+                                                onChange={handleFileChange}
+                                            />
+                                          
+                                     </>
+                                    ) }
+                                      <button  
                                         className="h-[30px] text-[18px] w-fit px-4 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white m-auto"
-                                    >
-                                        Valider
-                                    </button>
+                                        >
+                                                Valider
+                                            </button>
                             </div>
-                            ) 
                         )
                     }
                 </form>
