@@ -34,7 +34,7 @@ const commandeId  = props => {
         },   
     ]
 
-    const [supprimerProduit , setSupprimerProduit] = useState(false)
+    const [modifierBoutton , setModiferBoutton] = useState(false)
 
     return(
         <div className="h-fit pb-10 w-[100vw] min-h-[100vh] text-[20px] flex font-mono justify-center bg-[#EBFFEF]">
@@ -68,7 +68,7 @@ const commandeId  = props => {
                             {
                                 produits.map((el , index) => {
                                     return(
-                                        <div className="h-[120px] w-[120px] rounded-md shadow-md bg-white/50 backdrop-blur-sm flex flex-col items-center p-2 space-y-2 text-[11px]">
+                                        <div className="h-[120px] w-[120px] rounded-md shadow-md bg-white/50 backdrop-blur-sm flex flex-col items-center p-2 space-y-2 text-[11px] relative">
                                             <div className=" text-[14px] break-all text-[#2EAC33] font-semibold">{el.name}</div>
                                             <div className="flex flex-row">
                                                 <div>Quantitée :</div>
