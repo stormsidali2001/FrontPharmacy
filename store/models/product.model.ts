@@ -16,7 +16,9 @@ export interface ProductModel extends ProductState,ProductActions,ProductThunks{
 
 export const productModel:ProductModel = {
     uploadImage:thunk(async(actions,payload)=>{
-           const res = axios.post("http://localhost:8080/upload",payload);
+       return await axios.post("http://localhost:8080/files/upload",payload);
+
+           
     })
 
 }

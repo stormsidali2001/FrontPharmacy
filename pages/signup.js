@@ -8,9 +8,9 @@ import Link from 'next/link'
 const Signup = ({toastsRef}) => {
     const router = useRouter();
     const [suivant , setSuivant] = useState(false);
-    const [firstname , setFirstName] = useState("");
+    const [firstName , setFirstName] = useState("");
     const [lastName , setLastName] = useState("")
-    const [adress , setAdress] = useState("")
+    const [address , setAddress] = useState("")
     const [phoneNumber , setPhoneNumber] = useState(null);
     const [email , setEmail] = useState("")
     const [password , setPassword] = useState("")
@@ -19,7 +19,7 @@ const Signup = ({toastsRef}) => {
 
     const handleNext = e => {
         e.preventDefault();
-        if (firstname === "" && lastName === "" && (email === "" || adress  === "")){
+        if (firstName === "" && lastName === "" && (email === "" || adress  === "")){
             e.preventDefault();       
            toastsRef.current.addMessage({text:"un champs est manquant",mode:"Error"})
         }
@@ -38,9 +38,9 @@ const Signup = ({toastsRef}) => {
             await signUpUser({
                 email,
                 password,
-                firstname,
+                firstName,
                 lastName,
-                adress,
+                address,
                 phoneNumber,
             })
             toastsRef.current.addMessage({text:"c'est fait",mode:"Alert"})
@@ -75,6 +75,7 @@ const Signup = ({toastsRef}) => {
                                             placeholder="Nom..."
                                             className="h-[30px] w-[190px] rounded-md shadow-md bg-white/20 backdrop-blur-sm px-3 outline-none mb-4"
                                             onChange={(e) => setFirstName(e.target.value)}
+                                            value={firstName}
                                         />
                                    </td>
                                 </tr>
@@ -85,6 +86,7 @@ const Signup = ({toastsRef}) => {
                                             placeholder="Prénom..."
                                             className=" w-[190px] h-[30px] rounded-md shadow-md bg-white/20 backdrop-blur-sm px-3 outline-none mb-4"
                                             onChange={(e) => setLastName(e.target.value)}
+                                            value={lastName}
                                         />
                                     </td>
                                 </tr>
@@ -105,7 +107,8 @@ const Signup = ({toastsRef}) => {
                                         <input
                                             placeholder="Adresse..."
                                             className="h-[30px] w-[190px] rounded-md shadow-md bg-white/20 backdrop-blur-sm px-3 outline-none"
-                                            onChange={(e) => setAdress(e.target.value)}
+                                            onChange={(e) => setAddress(e.target.value)}
+                                            value={address}
                                         />
                                     </td>
                                 </tr>

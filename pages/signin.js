@@ -15,10 +15,12 @@ const Signin = ({toastsRef}) => {
                 toastsRef.current.addMessage({text:"remlissez tout les champs",mode:"Error"})
                 return;
             }
-            await signin({
+          const data =   await signin({
                             email,
                             password
                          })
+
+            console.log("data",data)
             toastsRef.current.addMessage({text:"c'est fait",mode:"Alert"})
         }catch(err){
             console.log(err);
