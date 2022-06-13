@@ -146,7 +146,7 @@ const commandesAdmin = props => {
                                                         return(
                                                             <tr className={`w-[100%] ${el.commandeClient.length > 1 ?"border-b border-[#2EAC33]/50" : ""} `}>
                                                                <td>
-                                                                   <Link href={`/commandesadmin/${element.id}`}>
+                                                                   <Link href={`/commandesclient/${element.id}`}>
                                                                         <button className="h-[18px] text-[11px] w-fit px-2 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white m-auto">Voir plus</button>
                                                                    </Link>
                                                                 </td> 
