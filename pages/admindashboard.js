@@ -83,7 +83,9 @@ const AdminDashboard = props => {
                         <div></div>
                         <div className="flex flex-row items-center space-x-[54%]">
                             <div className="text-[25px] font-light text-[#2EAC33]">Stock</div>
-                            <button className="h-[30px] text-[18px] w-fit px-4 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white">Consulter stock</button>
+                            <Link href="/productlist">
+                                <button className="h-[30px] text-[18px] w-fit px-4 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white">Consulter stock</button>
+                            </Link>
                         </div>
                         <div className="text-[25px] font-light text-[#2EAC33]">Derniers produits</div>
                         <div className="flex flex-wrap gap-8">
@@ -95,7 +97,9 @@ const AdminDashboard = props => {
                                         <div className="bg-white pl-[3px] text-[12px] shadow-lg rounded-lg h-[100px] w-[100px] flex flex-col  justify-center space-y-2">
                                             <div>quantitée : {el.quantity}</div>
                                             <div>prix : {el.price}</div>
-                                            <button className="h-[18px] text-[12px] m-auto w-fit px-2 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white">Voir plus</button>
+                                            <Link href={`/productlist/${el.id}`}>
+                                                <button className="h-[18px] text-[12px] m-auto w-fit px-2 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white">Voir plus</button>
+                                            </Link>
                                         </div>
                                     </div>
                                     )
@@ -106,7 +110,9 @@ const AdminDashboard = props => {
                     <div className="w-[48vw] flex flex-col">
                         <div className="flex flex-row items-center space-x-[40%]">
                             <div className="text-[25px] text-[#2EAC33]">Commandes</div>
-                            <button className="h-[30px] mt-2 text-[18px] w-fit px-4 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white">Voir les commandes</button>
+                            <Link href="/commandesadmin">
+                                <button className="h-[30px] mt-2 text-[18px] w-fit px-4 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white">Voir les commandes</button>
+                            </Link>
                         </div>
                         <div className="text-[25px] font-light text-[#2EAC33]">Dernières commandes</div>
                         <div className="flex flex-wrap gap-8">
@@ -121,7 +127,9 @@ const AdminDashboard = props => {
                                         <div className="bg-white justify-center pl-[3px] text-[12px] shadow-lg rounded-lg h-[100px] w-[100px] flex flex-col space-y-2">
                                             <div>{el.produit}</div>
                                             <div>quantite : {el.quantity}</div>
-                                            <button className="h-[18px] text-[12px] m-auto w-fit px-2 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white">Voir plus</button>
+                                            <Link href={`/commandesclient/${el.id}`}> 
+                                                <button className="h-[18px] text-[12px] m-auto w-fit px-2 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white">Voir plus</button>
+                                            </Link>
                                         </div>
                                     </div>
                                     )

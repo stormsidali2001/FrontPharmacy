@@ -1,4 +1,4 @@
 import {createStore} from 'easy-peasy'
-import {model} from './models'
-console.log(model)
+//@ts-ignore
+import {model} from './models/index.ts'
 export const store =createStore(model)

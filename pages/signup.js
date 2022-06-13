@@ -1,31 +1,65 @@
+//@ts-ignore
+import {useStoreActions} from '../store/hooks.ts'
 import { useState } from "react"
 import Navbar from "../components/Navbar"
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
-const Signup = props => {
-
+const Signup = ({toastsRef}) => {
+    const router = useRouter();
     const [suivant , setSuivant] = useState(false);
     const [firstname , setFirstName] = useState("");
     const [lastName , setLastName] = useState("")
     const [adress , setAdress] = useState("")
-    const [phoneNumber , setPhoneNumber] = useState(0)
+    const [phoneNumber , setPhoneNumber] = useState(null)
     const [email , setEmail] = useState("")
     const [password , setPassword] = useState("")
     const [confirmPassword , setConfirmPassword] = useState("")
-    
+    const {signUpUser} = useStoreActions(store=>store.userModel)
 
     const handleNext = e => {
+        e.preventDefault();
         if (firstname === "" && lastName === "" && (email === "" || adress  === "")){
             e.preventDefault
-           console.log(" un champs est manquant")
+          
+           toastsRef.current.addMessage({text:"un champs est manquant",mode:"Error"})
         }
         else {
-            e.preventDefault;
             setSuivant(true)
         }
+    }
+    const handleSignUp =async e=>{
+        if (email === "" && password === "" && confirmPassword===""){
+            e.preventDefault
+          
+           toastsRef.current.addMessage({text:"un champs est manquant",mode:"Error"})
+        }
+        e.preventDefault();
+        try{
+            await signUpUser({
+                email,
+                password,
+                firstname,
+                lastName,
+                adress,
+                phoneNumber,
+            })
+            toastsRef.current.addMessage({text:"c'est fait",mode:"Alert"})
+            setTimeout(()=>{
+                router.push("/signin")
+            },2000)
+        }catch(err){
+            toastsRef.current.addMessage({text:"ops...Erreur!!",mode:"Error"})
+            console.log(err)
+
+        }
+       
+        
     }
 
     return (
         <div className="h-fit pb-10 w-[100vw] min-h-[100vh] text-[20px] flex font-mono justify-center bg-[#EBFFEF]">
+           
             <Navbar/>
             <div className="pt-[100px] flex flex-col items-center space-y-6 relative">
                 <img/>
@@ -62,6 +96,7 @@ const Signup = props => {
                                             placeholder="Numéro de tlf..."
                                             className="w-[190px] h-[30px] rounded-md shadow-md bg-white/20 backdrop-blur-sm px-3 outline-none mb-4"
                                             onChange={(e) => setPhoneNumber(e.target.value)}
+                                            value={phoneNumber}
                                         />
                                     </td>
                                 </tr>
@@ -82,6 +117,9 @@ const Signup = props => {
                             >
                                 Suivant
                             </button>
+                            <Link href="/signin">
+                                <button className="text-[#2EAC33] hover:text-[#2EAC33]/50">Vous avez un compte : sign in</button>
+                            </Link>
                         </div>
                     }
                     {
@@ -94,6 +132,8 @@ const Signup = props => {
                                         placeholder="Email..."
                                         className="w-[180px] h-[30px] rounded-md shadow-md bg-white/20 backdrop-blur-sm px-3 outline-none mb-4"
                                         onChange={(e) => setEmail(e.target.value)}
+                                        value={email}
+                                     
                                     />
                                 </td>
                             </tr>
@@ -104,6 +144,7 @@ const Signup = props => {
                                         placeholder="Password..."
                                         className="w-[180px] h-[30px] rounded-md shadow-md bg-white/20 backdrop-blur-sm px-3 outline-none mb-4"
                                         type="password"
+                                        value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
                                 </td>
@@ -116,13 +157,14 @@ const Signup = props => {
                                         className="w-[180px] h-[30px] rounded-md shadow-md bg-white/20 backdrop-blur-sm px-3 outline-none mb-4"
                                         type = "password"
                                         onChange={(e) => setConfirmPassword(e.target.value)}
+                                        value={confirmPassword}
                                     />
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <button
-                                        onClick={(e) => {e.preventDefault;setValider(!valider) }}
+                                        onClick={(e) => {e.preventDefault();setSuivant(false) }}
                                         className="h-[30px] text-[18px] w-fit px-4 rounded-lg shadow-lg hover:bg-[#2EAC33]/80 bg-[#2EAC33] text-white m-auto"
                                     >
                                         Précédent
@@ -130,8 +172,9 @@ const Signup = props => {
                                 </td>
                                 <td>
                                     <button
-                                        type="submit"
+                                       
                                         className="h-[30px] text-[18px] ml-20 w-fit px-4 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white m-auto"
+                                        onClick={handleSignUp}
                                     >
                                         Valider
                                     </button>

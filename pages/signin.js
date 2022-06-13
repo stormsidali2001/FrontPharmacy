@@ -1,11 +1,31 @@
+//@ts-ignore
+import {useStoreActions} from '../store/hooks.ts'
 import { useState } from "react"
 import Navbar from "../components/Navbar"
 
-const Signin = props => {
+const Signin = ({toastsRef}) => {
 
     const [email , setEmail] = useState("")
     const [password , setPassword] = useState("")
+    const {signin} = useStoreActions(store=>store.userModel)
+    const handleSignin = async e =>{
+        e.preventDefault();
+        try{
+            if(email === '' || password === ''){
+                toastsRef.current.addMessage({text:"remlissez tout les champs",mode:"Error"})
+                return;
+            }
+            await signin({
+                            email,
+                            password
+                         })
+            toastsRef.current.addMessage({text:"c'est fait",mode:"Alert"})
+        }catch(err){
+            console.log(err);
+            toastsRef.current.addMessage({text:"Ops...Erreur!!!",mode:"Error"})
+        }
 
+    }
     return(
         <div className="h-fit pb-10 w-[100vw] min-h-[100vh] text-[20px] flex font-mono justify-center bg-[#EBFFEF]">
             <Navbar/>
@@ -19,6 +39,7 @@ const Signin = props => {
                             <td>
                                 <input
                                     placeholder="Email..."
+                                    type="email"
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="rounded-md shadow-md bg-white/20 backdrop-blur-sm px-3 outline-none"
                                 />
@@ -31,13 +52,15 @@ const Signin = props => {
                                     placeholder="Password..."
                                     onChange={(e)=> setPassword(e.target.value)}
                                     className="rounded-md shadow-md bg-white/20 backdrop-blur-sm px-3 outline-none"
+                                    type="password"
                                 />
                             </td>
                         </tr>
                     </table>
                     <button
                         className="h-[30px] text-[18px] w-fit px-4 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white m-auto"
-                    >
+                        onClick={handleSignin}
+                  >
                         Connection
                     </button>
                 </form>
