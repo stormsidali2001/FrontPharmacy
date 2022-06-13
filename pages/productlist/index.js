@@ -1,7 +1,12 @@
 import Navbar from "../../components/Navbar"
 import Link from "next/link"
+import { useState } from "react"
+import Edit from "../../Icons/Edit"
+import IdProduit from "./[productId]"
+import Trash from "../../Icons/Trash"
 
 const ListeProduit = props => {
+
 
     const data = [
         {
@@ -89,8 +94,16 @@ const ListeProduit = props => {
                                                 </button>
                                             </Link>
                                         </td>
-                                        <td className="text-center h-[36px]"><button>Modifier</button></td>
-                                        <td className="text-center h-[36px]"><button>Supprimer</button></td>
+                                        <td className="text-center h-[36px]">
+                                            <Link href={`/productlist/${row.id}`}>
+                                                <button 
+                                                    onClick={(e) => setModifier(true)}
+                                                >
+                                                    <Edit/>
+                                                </button>
+                                            </Link>
+                                        </td>
+                                        <td className="text-center h-[36px]"><button><Trash/></button></td>
                                     </tr>
                                 )
                             })

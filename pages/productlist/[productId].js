@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Navbar from "../../components/Navbar";
 
-const IdProduit = props => {
+const IdProduit = () => {
    
     const [name , setName ] = useState("Doliprane")
     const [imageURL , setImageURL] = useState("/doliprane.png")
-    const [modifier ,setModifier] = useState(false)
-    const [description , setDescription] = useState('mlih lel hama l wja3 rass l koulech dwa hayel')
+    const [description , setDescription] = useState('description quelquonque du produit numéro n')
+    const [modifier , setModifier] = useState(false)
     const [prix , setPrix] = useState(50)
     const [quantite , setQuantite] = useState(60)
 
@@ -15,7 +15,7 @@ const IdProduit = props => {
             <Navbar/>
             <div className="pt-[100px] flex flex-col items-center space-y-6 relative">
                 <div  className='text-[30px] font-semibold text-[#2EAC33]'>Détails du produit : {name}</div>
-                <div className="bg-white/60 shadow-lg rounded-lg justify-center pt-12 h-[450px] w-[800px] flex flex-row space-x-12">
+                <div className=" justify-center pt-12 h-[450px] w-[800px] flex flex-row space-x-12">
                     <div className="flex flex-col space-y-3">
                         <div className="flex flex-row space-x-2">
                             <div className='text-[20px] text-[#2EAC33]'>Nom :</div>
