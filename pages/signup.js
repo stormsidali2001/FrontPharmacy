@@ -20,8 +20,7 @@ const Signup = ({toastsRef}) => {
     const handleNext = e => {
         e.preventDefault();
         if (firstname === "" && lastName === "" && (email === "" || adress  === "")){
-            e.preventDefault
-          
+            e.preventDefault();       
            toastsRef.current.addMessage({text:"un champs est manquant",mode:"Error"})
         }
         else {
