@@ -10,42 +10,42 @@ const listeMedicaments = props => {
         {
             id : 1,
             title : "Doliprane",
-            text : "mlih l wja3 rass mlih l koulech chroub w rgoud tesbah labas",
+            text : "Description d'une commande quelqounque ",
             image : "/doliprane.png",
             price : "50" 
         },
         {
             id : 5,
             title : "Doliprane",
-            text : "mlih l wja3 rass mlih dwa dwa dwa l koulech chroub w rgoud tesbah labas",
+            text : "Description d'une commande quelqounque",
             image : "/doliprane.png",
             price : "50" 
         },
         {
             id : 7,
             title : "Doliprane",
-            text : "mlih l wja3 rass mlih dwa dwa dwa l koulech chroub w rgoud tesbah labas",
+            text : "Description d'une commande quelqounque",
             image : "/doliprane.png",
             price : "50" 
         },
         {
             id : 10,
             title : "Doliprane",
-            text : "mlih l wja3 rass mlih dwa dwa dwa l koulech chroub w rgoud tesbah labas",
+            text : "Description d'une commande quelqounque",
             image : "/doliprane.png",
             price : "50" 
         },
         {
             id : 25,
             title : "Doliprane",
-            text : "mlih l wja3 rass mlih dwa dwa dwa l koulech chroub w rgoud tesbah labas",
+            text : "Description d'une commande quelqounque",
             image : "/doliprane.png",
             price : "50" 
         },
         {
             id : 75,
             title : "Doliprane",
-            text : "mlih l wja3 rass mlih dwa dwa dwa l koulech chroub w rgoud tesbah labas",
+            text : "Description d'une commande quelqounque",
             image : "/doliprane.png",
             price : "50" 
         },
