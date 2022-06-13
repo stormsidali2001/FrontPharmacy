@@ -11,7 +11,7 @@ const Signup = ({toastsRef}) => {
     const [firstname , setFirstName] = useState("");
     const [lastName , setLastName] = useState("")
     const [adress , setAdress] = useState("")
-    const [phoneNumber , setPhoneNumber] = useState(null)
+    const [phoneNumber , setPhoneNumber] = useState(null);
     const [email , setEmail] = useState("")
     const [password , setPassword] = useState("")
     const [confirmPassword , setConfirmPassword] = useState("")
