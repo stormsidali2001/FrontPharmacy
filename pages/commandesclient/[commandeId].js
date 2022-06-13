@@ -40,6 +40,8 @@ const commandeId  = props => {
     const [modifierBoutton , setModiferBoutton] = useState(false)
     const [qttProductModifier , setQttProductModifier] = useState(null)
     const [idProductModifier , setIdProductModifier] = useState(null)
+    const [validated , setValidated] = useState(null)
+    const userType = "client"
 
     return(
         <div className="h-fit pb-10 w-[100vw] min-h-[100vh] text-[20px] flex font-mono justify-center bg-[#EBFFEF]">
@@ -121,17 +123,32 @@ const commandeId  = props => {
                             }
                         </div>
                     </div>
-                    <div 
-                        className="absolute bottom-4 left-6 cursor-pointer h-[30px] text-[18px] w-fit px-2 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white"
-                        onClick={(e) => setModiferBoutton(true)}
-                    >
-                        Modifier
-                    </div>
-                    <div 
-                        className="absolute bottom-4 right-6 cursor-pointer h-[30px] text-[18px] w-fit px-2 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white"
-                    >
-                        Supprimer
-                    </div>
+                    {
+                        userType === "client"&&
+                        <div>
+                            <div 
+                                className="absolute bottom-4 left-6 cursor-pointer h-[30px] text-[18px] w-fit px-2 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white"
+                                onClick={(e) => setModiferBoutton(true)}
+                            >
+                                Modifier
+                            </div>
+                            <div 
+                                className="absolute bottom-4 right-6 cursor-pointer h-[30px] text-[18px] w-fit px-2 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white"
+                            >
+                                Supprimer
+                            </div>
+                        </div>
+                    }
+                    {
+                        userType === "admin"&&
+                        <div 
+                                className="absolute bottom-4 rignt-6 cursor-pointer h-[30px] text-[18px] w-fit px-2 rounded-lg shadow-lg bg-[#2EAC33]/80 hover:bg-[#2EAC33] text-white"
+                                onClick={(e) => setValidated(true)}
+                            >
+                                Approuver
+                        </div>
+
+                    }
                 </div>
             </div>
         </div>
